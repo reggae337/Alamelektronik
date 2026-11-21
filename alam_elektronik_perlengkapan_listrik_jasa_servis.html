@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALAM ELEKTRONIK - Toko Perlengkapan Listrik & Jasa Servis Terpercaya</title>
+    <meta name="description" content="Solusi lengkap kebutuhan perlengkapan listrik (lampu, kabel, fiting, steker, sparepart) dan jasa servis elektronik rumah tangga (kipas angin, blender, mesin cuci, mejikom, kulkas, pompa air).">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(16, 185, 129, 0.08)',
+                        'card': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <!-- ==================== NAVBAR (STICKY) ==================== -->
+    <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#beranda" class="flex items-center gap-2.5 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:bg-emerald-700 transition-colors">
+                        <i data-lucide="zap" class="w-6 h-6 fill-current"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg md:text-xl font-extrabold tracking-tight text-slate-900 leading-none">
+                            ALAM <span class="text-emerald-600">ELEKTRONIK</span>
+                        </span>
+                        <span class="text-[11px] font-medium text-slate-500 mt-0.5 tracking-wide">Listrik & Servis Rumah Tangga</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#beranda" class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">Beranda</a>
+                    <a href="#layanan" class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">Layanan Servis</a>
+                    <a href="#produk" class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">Produk & Sparepart</a>
+                    <a href="#keunggulan" class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">Keunggulan</a>
+                    <a href="#lokasi" class="text-sm font-semibold text-slate-600 hover:text-emerald-600 transition-colors">Lokasi & Kontak</a>
+                </nav>
+
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 transition-all active:scale-95">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>Hubungi WA</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-btn" type="button" aria-label="Buka Menu" aria-expanded="false"
+                            class="p-2.5 rounded-xl text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors">
+                        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+                        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-100 shadow-lg">
+            <div class="px-4 pt-2 pb-5 space-y-1.5">
+                <a href="#beranda" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Beranda</a>
+                <a href="#layanan" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Layanan Servis</a>
+                <a href="#produk" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Produk & Sparepart</a>
+                <a href="#keunggulan" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Keunggulan</a>
+                <a href="#lokasi" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Lokasi & Kontak</a>
+                <div class="pt-3 px-2">
+                    <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" 
+                       class="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-base font-semibold px-5 py-3.5 rounded-xl shadow-md shadow-emerald-600/20 transition-all">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Hubungi WA (0877-2907-0933)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="beranda" class="relative overflow-hidden bg-gradient-to-b from-emerald-50/70 via-white to-white pt-10 pb-16 md:pt-16 md:pb-24">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-80 h-80 bg-emerald-50/80 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Left Column: Copywriting & CTAs -->
+                <div class="lg:col-span-7 text-left">
+                    <!-- Trust Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                        <span>Toko Perlengkapan Listrik & Jasa Servis Terpercaya</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.18] mb-5">
+                        Solusi Lengkap Kebutuhan Listrik & <span class="text-emerald-600">Servis Elektronik</span> Rumah Tangga Anda
+                    </h1>
+
+                    <!-- Sub-headline -->
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
+                        Dari perlengkapan listrik harian seperti lampu, kabel, fiting, steker, hingga layanan perbaikan kipas, mesin cuci, kulkas, dan pompa air—semua ditangani dengan jujur, rapi, dan tepat sasaran di <strong class="font-semibold text-slate-800">ALAM ELEKTRONIK</strong>.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
+                        <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-4 rounded-xl shadow-lg shadow-emerald-600/25 transition-all hover:-translate-y-0.5 active:translate-y-0 text-center">
+                            <i data-lucide="phone-call" class="w-5 h-5"></i>
+                            <span>Chat WA / Telepon (0877-2907-0933)</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/bm1ttN4CtGPbPnsf6" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-emerald-50 text-emerald-700 border-2 border-emerald-600 font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 active:translate-y-0 text-center">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-emerald-600"></i>
+                            <span>Lihat Lokasi Toko</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Trust Indicators -->
+                    <div class="mt-8 pt-6 border-t border-slate-100 grid grid-cols-3 gap-4 max-w-lg">
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 font-medium">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                            <span>Pengecekan Jelas</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 font-medium">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                            <span>Stok Lengkap</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-600 font-medium">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                            <span>Respon Cepat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Modern Visual Summary Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-xl shadow-emerald-900/5">
+                        <!-- Top Card Header -->
+                        <div class="flex items-center justify-between pb-5 mb-5 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20">
+                                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h2 class="font-bold text-slate-900 text-base sm:text-lg">Layanan Terpadu</h2>
+                                    <p class="text-xs text-slate-500">Belanja Listrik & Servis Elektronik</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                                Siap Melayani
+                            </span>
+                        </div>
+
+                        <!-- Highlighted Services & Products Box -->
+                        <div class="space-y-3.5 mb-6">
+                            <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="settings" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-slate-800">Jasa Servis Elektronik</h3>
+                                    <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Kipas angin, blender, mesin cuci, mejikom, kulkas, pompa air & alat rumah tangga lainnya.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-slate-800">Perlengkapan Listrik & Sparepart</h3>
+                                    <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Lampu, kabel, fiting, steker, stop kontak, hingga suku cadang elektronik siap pakai.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Contact Footer inside Card -->
+                        <div class="bg-slate-900 text-white rounded-2xl p-4 flex items-center justify-between gap-3">
+                            <div>
+                                <p class="text-[11px] text-emerald-400 font-semibold uppercase tracking-wider">Konsultasi Langsung</p>
+                                <p class="text-sm sm:text-base font-bold mt-0.5">0877-2907-0933</p>
+                            </div>
+                            <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" 
+                               class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm rounded-xl transition-colors shrink-0">
+                                Chat Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BAGIAN 2: LAYANAN SERVIS ELEKTRONIK ==================== -->
+    <section id="layanan" class="py-16 md:py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider border border-emerald-200 mb-3">
+                    Layanan Perbaikan
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Peralatan Rumah Tangga Bermasalah? Serahkan pada Teknisi Kami
+                </h2>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                    ALAM ELEKTRONIK melayani perbaikan berbagai peralatan rumah tangga dengan pengecekan jelas dan pengerjaan teliti.
+                </p>
+            </div>
+
+            <!-- 7 Service Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 1. Servis Kipas Angin -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="fan" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Kipas Angin</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Mati total, seret, baling-baling tidak berputar optimal, atau kendala kelistrikan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Servis Blender -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="cup-soda" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Blender</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Tidak menyala, putaran lemah, atau masalah pada bagian motor dan dudukan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Servis Mesin Cuci -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="washing-machine" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Mesin Cuci</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Tidak mau mencuci, tidak mengeringkan, air tidak masuk/buang, atau gangguan modul/kelistrikan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Servis Mejikom (Rice Cooker) -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="flame" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Mejikom (Rice Cooker)</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Nasi cepat basi, tidak mau menghangat/memasak, atau mati total.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Servis Kulkas -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="snowflake" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Kulkas</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Kurang dingin, bunga es menumpuk, bocor, atau kompresor bermasalah.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6. Servis Pompa Air -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:border-emerald-300 hover:shadow-soft transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white flex items-center justify-center mb-5 transition-colors">
+                            <i data-lucide="droplets" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Servis Pompa Air</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Tidak naik air, tekanan lemah, dengung tanpa putaran, atau bocor halus.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7. Berbagai Alat Rumah Tangga Lainnya (Spans 2 cols on larger screens for balanced grid) -->
+                <div class="sm:col-span-2 bg-emerald-50/70 rounded-2xl p-6 border border-emerald-200/80 shadow-card hover:border-emerald-400 transition-all group flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/20">
+                        <i data-lucide="tv" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1.5">Berbagai Alat Rumah Tangga Lainnya</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Punya alat elektronik rumahan lain yang bermasalah? Konsultasikan dulu ke kami untuk pengecekan dan solusi terbaiknya.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Consultation Button -->
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/6287729070933?text=Halo%20ALAM%20ELEKTRONIK,%20saya%20ingin%20konsultasi%20keluhan%20servis%20alat%20elektronik." target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2.5 bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white border border-emerald-200 hover:border-emerald-600 font-semibold px-6 py-3.5 rounded-xl transition-all shadow-sm">
+                    <i data-lucide="message-square-plus" class="w-5 h-5"></i>
+                    <span>Konsultasi Keluhan Kerusakan via WhatsApp</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== BAGIAN 3: PRODUK & PERLENGKAPAN LISTRIK ==================== -->
+    <section id="produk" class="py-16 md:py-24 bg-emerald-50/50 border-y border-emerald-100/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-white text-emerald-700 text-xs font-bold uppercase tracking-wider border border-emerald-200 mb-3 shadow-xs">
+                    Katalog Toko
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Butuh Perlengkapan Listrik & Sparepart? Stok Lengkap Siap Pakai
+                </h2>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+                    Lengkapi kebutuhan instalasi, penggantian, maupun perbaikan mandiri di rumah dengan pilihan barang berkualitas dan mudah dipasang.
+                </p>
+            </div>
+
+            <!-- 5 Featured Product Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. Lampu -->
+                <div class="bg-white rounded-2xl p-6 sm:p-7 border border-emerald-100 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Lampu</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Berbagai pilihan lampu untuk penerangan rumah, ruangan kerja, maupun area luar dengan cahaya terang dan hemat daya.
+                    </p>
+                </div>
+
+                <!-- 2. Kabel -->
+                <div class="bg-white rounded-2xl p-6 sm:p-7 border border-emerald-100 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="cable" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Kabel</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Kabel listrik untuk kebutuhan instalasi, sambungan, dan peralatan rumah tangga dengan kualitas penghantar yang aman.
+                    </p>
+                </div>
+
+                <!-- 3. Fiting -->
+                <div class="bg-white rounded-2xl p-6 sm:p-7 border border-emerald-100 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="lamp-ceiling" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Fiting</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Fiting lampu plafon, gantung, maupun kebutuhan penggantian titik lampu yang praktis dan tahan panas.
+                    </p>
+                </div>
+
+                <!-- 4. Steker & Stop Kontak -->
+                <div class="bg-white rounded-2xl p-6 sm:p-7 border border-emerald-100 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="plug" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Steker & Stop Kontak</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Colokan dan titik sambung daya yang kokoh untuk pemakaian sehari-hari agar kelistrikan rumah tetap rapi dan aman.
+                    </p>
+                </div>
+
+                <!-- 5. Berbagai Macam Sparepart Lainnya (Spans 2 columns on lg) -->
+                <div class="sm:col-span-2 bg-white rounded-2xl p-6 sm:p-7 border-2 border-emerald-200 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-1">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Berbagai Macam Sparepart Lainnya</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Komponen dan suku cadang pendukung untuk kebutuhan perbaikan serta perawatan alat elektronik (kapasitor, saklar, dinamo, gear, selang, dan lainnya).
+                            </p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6287729070933?text=Halo%20ALAM%20ELEKTRONIK,%20saya%20mau%20tanya%20ketersediaan%20stok%20barang/sparepart." target="_blank" rel="noopener noreferrer"
+                       class="shrink-0 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-5 py-3 rounded-xl transition-colors w-full sm:w-auto justify-center">
+                        <span>Tanya Stok</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BAGIAN 4: KEUNGGULAN MEMILIH ALAM ELEKTRONIK ==================== -->
+    <section id="keunggulan" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider border border-emerald-200 mb-3">
+                    Nilai Lebih Kami
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Kenapa Pelanggan Memilih ALAM ELEKTRONIK?
+                </h2>
+            </div>
+
+            <!-- 4 Advantages Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Point 1 -->
+                <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:bg-white hover:border-emerald-200 hover:shadow-soft transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                        <i data-lucide="store" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Satu Tempat untuk Belanja & Servis</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Praktis memenuhi kebutuhan alat listrik sekaligus memperbaiki perangkat elektronik rusak tanpa perlu berpindah tempat.
+                    </p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:bg-white hover:border-emerald-200 hover:shadow-soft transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Melayani Ragam Kebutuhan Rumah Tangga</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Mulai dari lampu harian hingga peralatan penting seperti mesin cuci, kulkas, dan pompa air ditangani dengan cermat.
+                    </p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:bg-white hover:border-emerald-200 hover:shadow-soft transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                        <i data-lucide="message-circle-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Komunikasi Mudah & Responsif</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Tanya stok barang atau konsultasi gejala kerusakan bisa langsung lewat WhatsApp maupun telepon sebelum datang.
+                    </p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:bg-white hover:border-emerald-200 hover:shadow-soft transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                        <i data-lucide="navigation" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Lokasi Jelas & Mudah Dijangkau</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Titik lokasi toko tersedia akurat di Google Maps sehingga memudahkan Anda untuk berkunjung langsung kapan saja.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BAGIAN 5: CARA PEMESANAN / KONSULTASI (3 LANGKAH) ==================== -->
+    <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    Alur Layanan
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Mulai dalam 3 Langkah Mudah
+                </h2>
+            </div>
+
+            <!-- 3 Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                
+                <!-- Step 1 -->
+                <div class="relative bg-white rounded-2xl p-7 border border-slate-200/80 shadow-card">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-11 h-11 rounded-full bg-emerald-600 text-white font-extrabold text-lg flex items-center justify-center shadow-md shadow-emerald-600/20">
+                            1
+                        </span>
+                        <i data-lucide="smartphone" class="w-6 h-6 text-emerald-600/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2.5">Hubungi Kami</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Kirim pesan WhatsApp atau telepon ke <a href="tel:087729070933" class="font-semibold text-emerald-700 hover:underline">0877-2907-0933</a> untuk menanyakan stok barang atau keluhan alat elektronik Anda.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative bg-white rounded-2xl p-7 border border-slate-200/80 shadow-card">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-11 h-11 rounded-full bg-emerald-600 text-white font-extrabold text-lg flex items-center justify-center shadow-md shadow-emerald-600/20">
+                            2
+                        </span>
+                        <i data-lucide="clipboard-check" class="w-6 h-6 text-emerald-600/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2.5">Cek & Konfirmasi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Datang langsung ke lokasi toko atau diskusikan kebutuhan barang/servis yang diperlukan secara transparan.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative bg-white rounded-2xl p-7 border border-slate-200/80 shadow-card">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="w-11 h-11 rounded-full bg-emerald-600 text-white font-extrabold text-lg flex items-center justify-center shadow-md shadow-emerald-600/20">
+                            3
+                        </span>
+                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-600/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2.5">Proses & Selesai</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Dapatkan barang perlengkapan listrik yang Anda butuhkan atau lanjutkan proses perbaikan sesuai kesepakatan.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BAGIAN 6: CTA PENUTUP & LOKASI TOKO ==================== -->
+    <section id="lokasi" class="py-12 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative overflow-hidden bg-emerald-600 rounded-3xl px-6 py-12 sm:px-12 sm:py-16 text-center shadow-xl shadow-emerald-600/20">
+                
+                <!-- Decorative Circles -->
+                <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-500/50 pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-emerald-700/60 pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                        Butuh Bantuan Servis atau Cari Perlengkapan Listrik Hari Ini?
+                    </h2>
+                    <p class="text-base sm:text-lg text-emerald-50 leading-relaxed mb-8">
+                        Jangan tunggu kerusakan makin parah atau kehabisan stok saat genting. Hubungi ALAM ELEKTRONIK sekarang juga.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+                        <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-emerald-50 text-emerald-700 font-bold px-7 py-4 rounded-xl shadow-lg transition-all hover:-translate-y-0.5 text-base">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+                            <span>Hubungi WhatsApp 0877-2907-0933</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/bm1ttN4CtGPbPnsf6" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center justify-center gap-2.5 bg-transparent hover:bg-emerald-700/60 text-white border-2 border-white font-bold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-base">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            <span>Buka Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-slate-900 text-slate-300 pt-12 pb-24 md:pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800">
+                
+                <!-- Brand Info -->
+                <div>
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-white">
+                            ALAM <span class="text-emerald-500">ELEKTRONIK</span>
+                        </span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+                        Toko perlengkapan listrik, sparepart, dan jasa servis peralatan elektronik rumah tangga terpercaya.
+                    </p>
+                </div>
+
+                <!-- Kontak Langsung -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Kontak & Pemesanan</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="tel:087729070933" class="inline-flex items-center gap-2.5 text-slate-300 hover:text-emerald-400 transition-colors">
+                                <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+                                <span>Telepon: 087729070933</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 text-slate-300 hover:text-emerald-400 transition-colors">
+                                <i data-lucide="message-circle" class="w-4 h-4 text-emerald-500"></i>
+                                <span>WhatsApp: 0877-2907-0933</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Lokasi Toko -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Lokasi Toko</h4>
+                    <p class="text-sm text-slate-400 mb-3">
+                        Kunjungi toko kami secara langsung untuk pembelian barang maupun pengantaran servis.
+                    </p>
+                    <a href="https://maps.app.goo.gl/bm1ttN4CtGPbPnsf6" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span>Lihat Petunjuk Arah di Google Maps</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; <span id="current-year"></span> ALAM ELEKTRONIK. Hak Cipta Dilindungi.</p>
+                <p>Solusi Listrik & Servis Elektronik Rumah Tangga</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+    <a href="https://wa.me/6287729070933" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp ALAM ELEKTRONIK"
+       class="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3.5 rounded-full shadow-2xl shadow-emerald-900/30 transition-all hover:scale-105 active:scale-95 group">
+        <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+        <span class="font-bold text-sm pr-1 hidden sm:inline">Chat WA</span>
+    </a>
+
+    <!-- ==================== JAVASCRIPT INTERAKTIVITAS ==================== -->
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
+
+        // Set tahun otomatis di footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Toggle Menu Hamburger Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Tutup menu mobile otomatis saat salah satu link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
